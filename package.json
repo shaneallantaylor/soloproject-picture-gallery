@@ -1,0 +1,30 @@
+{
+  "name": "soloproject-picture-gallery",
+  "version": "1.0.0",
+  "description": "a basic image upload and sharing app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaneallantaylor/soloproject-picture-gallery.git"
+  },
+  "keywords": [
+    "CRUD",
+    "fullstack",
+    "node",
+    "react",
+    "express"
+  ],
+  "author": "Shane Taylor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaneallantaylor/soloproject-picture-gallery/issues"
+  },
+  "homepage": "https://github.com/shaneallantaylor/soloproject-picture-gallery#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
