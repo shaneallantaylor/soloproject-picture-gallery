@@ -40,8 +40,3 @@ const picturesReducer = (state = initialState, action) => {
 };
 
 export default picturesReducer;
-
-
-
-
-}
