@@ -12,7 +12,7 @@
 
 import React, { Component } from "react";
 import MainContainer from "./containers/MainContainer.jsx";
-
+import styles from './scss/application.scss';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <MainContainer />
-      </div>
+      <MainContainer />
     );
   }
 };

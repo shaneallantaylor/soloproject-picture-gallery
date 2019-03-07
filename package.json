@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production nodemon ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack",
-    "dev": "webpack-dev-server"
+    "dev": "NODE_ENV=production node ./server/server.js | webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -37,11 +37,13 @@
     "express": "^4.16.4",
     "nodemon": "^1.18.10",
     "pg": "^7.8.1",
+    "pg-hstore": "^2.3.2",
     "pg-promise": "^8.6.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -56,6 +58,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

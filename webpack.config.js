@@ -11,7 +11,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components|dist)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -31,5 +31,8 @@ module.exports = {
   },
   devServer: {
     publicPath: "/dist",
+    proxy: {
+      '/show': 'http://localhost:3030'
+    }
   }
 };

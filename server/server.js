@@ -1,4 +1,3 @@
-const dotenv = require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -6,7 +5,6 @@ const app = express();
 const port = 3030;
 const db = require('./queries');
 // const pg = require('pg');
-const pgp = require('pg-promise');
 // const db = pgp(process.env.DB_URL);
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
@@ -20,8 +18,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/show', db.getPictures, (req, res) => {
-  // res.send('We tried');
+  res.json(res.locals.pictures);
 });
+
+// app.post('/addPic', )
 
 
 app.listen(port, () => console.log(`App is up and listening on port ${port}!`));
