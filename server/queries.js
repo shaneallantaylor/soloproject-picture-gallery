@@ -15,34 +15,45 @@ const pool = new Pool({
 
 const getPictures = (req, res, next) => {
   pool.query('SELECT * FROM pictures ORDER BY id ASC', (err, results) => {
-    console.log('we are inside the client.query!');
     if (err) {
       return console.error('Error executing query', err.stack)
     }
-    console.log('results.rows is', results.rows);
     res.json(results.rows);
-    // next()
   })
 };
 
-const uploadPicture = (req, res) => {
-  // const client = new pg.Client(conString);
-  // client.connect((err) => {
-  //   if (err) {
-  //     return console.error('Could not connect to posgres', err);
-  //   }
-  //   client.query('STRING', (err, results) => {
-  //     if (err) {
-  //       throw err
-  //     }
-  //     res.status(200).send('Success!');
-  //   })
-  //   client.end();
-  // })
+const uploadPicture = (req, res, next) => {
+  pool.query(`INSERT INTO pictures(title, url) VALUES($1, $2)`, req.body, (err, results) => {
+    if (err) {
+      return console.error('Error executing query', err.stack)
+    }
+    res.json(results.rows);
+  })
+}
 
+const updatePicture = (req, res, next) => {
+  console.log('we inside updatePicture');
+  pool.query(`UPDATE pictures SET title = ($1) WHERE title = ($2)`, req.body, (err, results) => {
+    if (err) {
+      return console.error('Error executing query', err.stack)
+    }
+    res.send('Sucess, we updated!');
+  })
+}
+
+const deletePicture = (req, res, next) => {
+  // console.log(`DELETE FROM pictures WHERE title = ` + req.body[0]);
+  pool.query(`DELETE FROM pictures WHERE title = ($1)`, req.body, (err, results) => {
+    if (err) {
+      return console.error('Error executing query', err.stack)
+    }
+    res.json(results.rows);
+  })
 }
 
 module.exports = {
   getPictures,
-  uploadPicture
+  uploadPicture,
+  deletePicture,
+  updatePicture
 }

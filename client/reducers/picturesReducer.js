@@ -9,7 +9,9 @@ const initialState = {
     loading: false
   },
   newUrl: "",
-  newTitle: ""
+  newTitle: "",
+  newTarget: "",
+  updatedTitle: ""
 };
 
 const picturesReducer = (state = initialState, action) => {
@@ -18,29 +20,10 @@ const picturesReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
-    // case types.FETCH_PICTURES: {
-    //   pictureList = {
-    //     ...state.pictureList,
-    //     loading: true
-    //   }
-
-    //   return {
-    //     ...state,
-    //     pictureList
-    //   }
-    // }
-
-    case types.FETCH_PICTURES_SUCCESS: {
-      const newPictures = [...action.payload];
-      pictureList = {
-        pictures: newPictures,
-        loading: false,
-        error: null
-      }
-
+    case types.DELETE_PICTURE: {
       return {
         ...state,
-        pictureList
+        newTarget: ""
       }
     }
 
@@ -76,6 +59,15 @@ const picturesReducer = (state = initialState, action) => {
       return { ...state, newUrl: action.payload }
     }
 
+    case types.SET_NEW_TARGET: {
+      return { ...state, newTarget: action.payload }
+    }
+
+    case types.SET_UPDATED_TITLE: {
+      return { ...state, updatedTitle: action.payload }
+    }
+
+
     case types.LOAD_PICTURES: {
       const newPictures = [...action.payload];
       pictureList = {
@@ -83,10 +75,19 @@ const picturesReducer = (state = initialState, action) => {
         loading: false,
         error: null
       }
-
       return {
         ...state,
         pictureList
+      }
+    }
+
+    case types.CLEAR_TEXT: {
+      return {
+        ...state,
+        newUrl: "",
+        newTitle: "",
+        newTarget: "",
+        updatedTitle: ""
       }
     }
 

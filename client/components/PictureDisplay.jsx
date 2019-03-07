@@ -10,6 +10,7 @@
  */
 
 import React from "react";
+import styles from '../scss/pictureDisplay.scss';
 
 
 const PictureDisplay = props => (
@@ -17,6 +18,7 @@ const PictureDisplay = props => (
   // how do we update the store from a presentation component?
   <li className="picture-item">
     <img src={props.picUrl} />
+    <h6>{props.picTitle}</h6>
   </li>
 );
 

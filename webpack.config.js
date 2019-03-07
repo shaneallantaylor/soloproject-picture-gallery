@@ -32,7 +32,7 @@ module.exports = {
   devServer: {
     publicPath: "/dist",
     proxy: {
-      '/show': 'http://localhost:3030'
+      '/api': 'http://localhost:3030'
     }
   }
 };

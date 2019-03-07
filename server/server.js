@@ -17,11 +17,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../index.html'));
 });
 
-app.get('/show', db.getPictures, (req, res) => {
-  res.json(res.locals.pictures);
-});
+app.get('/api/show', db.getPictures);
 
-// app.post('/addPic', )
+app.post('/api/upload', db.uploadPicture);
+
+app.post('/api/delete', db.deletePicture);
+
+app.post('/api/update', db.updatePicture);
 
 
 app.listen(port, () => console.log(`App is up and listening on port ${port}!`));
