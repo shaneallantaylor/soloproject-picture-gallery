@@ -1,0 +1,78 @@
+.top-container {
+  position: relative;
+  width: 100%;
+}
+header {
+  background:#000;
+  width: 100%;
+  padding: 5px;
+  position: relative;
+  z-index:2;
+  margin-bottom: 70px;
+    ul {
+    margin: 0;
+    padding: 0 0 10px 0;
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: start;
+    align-items: start;
+
+    justify-content: space-around;
+    flex-flow: row;
+    flex-wrap: wrap;
+    
+  }
+  .full {
+    width: 100%;
+  }
+  li {
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    button {
+      border: 2px solid lightblue;
+      background: transparent;
+      color: lightblue;
+      font-family: monospace;
+      text-transform: lowercase;
+      font-size:20px;
+      box-shadow: #fff 4px 4px;
+      transition: color 0.5s ease;
+      cursor: pointer;
+      // border-radius: 4px;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    button:hover {
+      color: #fff;
+    }
+
+  }
+}
+
+h1 {
+  text-align: center;
+  display: block;
+  margin: 0;
+  color: #fff;
+  font-family: monospace;
+  font-weight: 100;
+}
+
+.drawers {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height:100%;
+}

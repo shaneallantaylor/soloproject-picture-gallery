@@ -1,0 +1,53 @@
+.drawer {
+  position: absolute;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  background: lightblue;
+  transition: bottom 0.5s ease;
+  text-align: center;
+  h3 {
+    margin: 0;
+    text-align: center;
+    padding: 10px 0 20px;
+    font-size: 18px;
+  }
+
+  .inputs {
+    display: flex;
+    justify-content: space-around;
+    .input-container {
+      position: relative;
+    }
+    label {
+      position: absolute;
+      top: -14px;
+      left: 0px;
+    }
+
+    input {
+    background: transparent;
+    border: #000 1px solid;
+    font-family: monospace;
+    }
+  }
+
+  button {
+    border: 2px solid #000;
+    background: transparent;
+    color: #000;
+    font-family: monospace;
+    text-transform: lowercase;
+    font-size:20px;
+    box-shadow: #fff 4px 4px;
+    transition: color 0.5s ease;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+
+}
+
+.drawer.on {
+  bottom: -117px;
+}

@@ -94,18 +94,27 @@ export const setUpdatedTitle = value => {
   }
 };
 
-export const fetchPicturesSuccess = value => {
+export const showAdd = () => {
   return {
-    type: types.FETCH_PICTURES_SUCCESS,
-    payload: value
+    type: types.SHOW_ADD
   }
-}
+};
 
+export const showDelete = () => {
+  return {
+    type: types.SHOW_DELETE
+  }
+};
+
+export const showUpdate = () => {
+  return {
+    type: types.SHOW_UPDATE
+  }
+};
 
 export const deletePicture = () => (dispatch, getState) => {
   if (getState().pictures.newTarget !== '') {
     const targetTitle = [getState().pictures.newTarget];
-    console.log('target title is', targetTitle);
     fetch('/api/delete', {
       method: "POST",
       headers: {

@@ -1,6 +1,5 @@
 require('dotenv').config();
 const { Pool } = require('pg');
-const conString = process.env.DB_STRING;
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
@@ -13,7 +12,7 @@ const pool = new Pool({
 
 
 
-const getPictures = (req, res, next) => {
+const getPictures = (req, res) => {
   pool.query('SELECT * FROM pictures ORDER BY id ASC', (err, results) => {
     if (err) {
       return console.error('Error executing query', err.stack)
@@ -22,7 +21,7 @@ const getPictures = (req, res, next) => {
   })
 };
 
-const uploadPicture = (req, res, next) => {
+const uploadPicture = (req, res) => {
   pool.query(`INSERT INTO pictures(title, url) VALUES($1, $2)`, req.body, (err, results) => {
     if (err) {
       return console.error('Error executing query', err.stack)
@@ -31,8 +30,7 @@ const uploadPicture = (req, res, next) => {
   })
 }
 
-const updatePicture = (req, res, next) => {
-  console.log('we inside updatePicture');
+const updatePicture = (req, res) => {
   pool.query(`UPDATE pictures SET title = ($1) WHERE title = ($2)`, req.body, (err, results) => {
     if (err) {
       return console.error('Error executing query', err.stack)
@@ -41,8 +39,7 @@ const updatePicture = (req, res, next) => {
   })
 }
 
-const deletePicture = (req, res, next) => {
-  // console.log(`DELETE FROM pictures WHERE title = ` + req.body[0]);
+const deletePicture = (req, res) => {
   pool.query(`DELETE FROM pictures WHERE title = ($1)`, req.body, (err, results) => {
     if (err) {
       return console.error('Error executing query', err.stack)

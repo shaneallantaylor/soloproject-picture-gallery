@@ -1,5 +1,19 @@
 
-ul {
+ul.pictures-list {
+  display: -webkit-box; 
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex; 
+  display: flex;
+
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: start;
+  align-items: start;
+
+  justify-content: center;
   margin: 0;
   padding: 0;
+  flex-flow: row wrap;
 }

@@ -11,45 +11,21 @@ const initialState = {
   newUrl: "",
   newTitle: "",
   newTarget: "",
-  updatedTitle: ""
+  updatedTitle: "",
+  showAddFlag: false,
+  showUpdateFlag: false,
+  showDeleteFlag: false
 };
 
 const picturesReducer = (state = initialState, action) => {
-  let pictureList;
+  let pictureList = {
+    pictures: [],
+    error: null,
+    loading: false
+  };
 
 
   switch (action.type) {
-
-    case types.DELETE_PICTURE: {
-      return {
-        ...state,
-        newTarget: ""
-      }
-    }
-
-    case types.FETCH_PICTURES_ERROR: {
-      pictureList = {
-        pictures: null,
-        error: "There was an error",
-        loading: false
-      }
-    }
-
-    case types.ADD_PICTURE: {
-      const newPicture = {
-        title: state.newTitle,
-        url: state.newUrl,
-      }
-
-      pictureList = { ...state.pictureList, ...newPicture };
-
-      return {
-        ...state,
-        pictureList,
-        newUrl: "",
-        newTitle: ""
-      }
-    }
 
     case types.SET_NEW_TITLE: {
       return { ...state, newTitle: action.payload }
@@ -67,6 +43,48 @@ const picturesReducer = (state = initialState, action) => {
       return { ...state, updatedTitle: action.payload }
     }
 
+    case types.SHOW_ADD: {
+      return {
+        ...state,
+        pictureList,
+        showAddFlag: true,
+        showUpdateFlag: false,
+        showDeleteFlag: false
+      }
+    }
+
+    case types.SHOW_UPDATE: {
+      return {
+        ...state,
+        pictureList,
+        showAddFlag: false,
+        showUpdateFlag: true,
+        showDeleteFlag: false
+      }
+    }
+
+
+    case types.SHOW_DELETE: {
+      return {
+        ...state,
+        pictureList,
+        showAddFlag: false,
+        showUpdateFlag: false,
+        showDeleteFlag: true
+      }
+    }
+
+    case types.HIDE_DRAWERS: {
+      return {
+        ...state,
+        showAddFlag: false,
+        showUpdateFlag: false,
+        showDeleteFlag: false
+      }
+    }
+
+
+
 
     case types.LOAD_PICTURES: {
       const newPictures = [...action.payload];
@@ -77,7 +95,10 @@ const picturesReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        pictureList
+        pictureList,
+        showAddFlag: false,
+        showUpdateFlag: false,
+        showDeleteFlag: false
       }
     }
 
@@ -87,7 +108,11 @@ const picturesReducer = (state = initialState, action) => {
         newUrl: "",
         newTitle: "",
         newTarget: "",
-        updatedTitle: ""
+        updatedTitle: "",
+        showAddFlag: false,
+        showUpdateFlag: false,
+        showDeleteFlag: false
+
       }
     }
 

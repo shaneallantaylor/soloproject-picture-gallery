@@ -26,14 +26,9 @@ const PicturesDisplay = props => {
 
   return (
     <div>
-      <button id="show-pictures" onClick={props.loadPictures}>
-        Show me the pictures!
-    </button>
-      <div className="container">
-        <ul className="pictures-list">
-          {picItems}
-        </ul>
-      </div>
+      <ul className="pictures-list">
+        {picItems}
+      </ul>
     </div>
   )
 }
